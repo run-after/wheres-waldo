@@ -16,16 +16,12 @@
   gap: 10px;
 }
 
-.placeholder {
-  height: 50px;
-  width: 50px;
-  background: blue;
-  border: 1px solid black;
+.characters > * {
   align-self: flex-end;
+  height: 50px;
 }
 
 .timer {
-  align-self: center;
   margin: auto;
   color: white;
   font-size: 2em;
