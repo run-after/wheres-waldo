@@ -9,13 +9,17 @@ const Header = () => {
 
   return (
     <div className='header'>
-      <div className='characters'>
-        <img src={waldo} alt='waldo'/>
-        <img src={wanda} alt='wanda'/>
-        <img src={odlaw} alt='odlaw'/>
-        <img src={wizard} alt='wizard'/>
+      <div className='character-container'>
+        <h6>Characters</h6>
+        <div className='characters'>
+          <img id='waldo-img' src={waldo} alt='waldo'/>
+          <img id='wanda-img' src={wanda} alt='wanda'/>
+          <img id='odlaw-img' src={odlaw} alt='odlaw'/>
+          <img id='wizard-img' src={wizard} alt='wizard'/>
+        </div>
+        
       </div>
-      <div className='timer'>00:00:00</div>
+      <div className='timer'>00:00:00</div>{/* This is a placeholder. Will have a timer from backend */}
     </div>
     
   )
