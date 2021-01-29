@@ -24,3 +24,36 @@ img {
     transform: scale(1);
   }
 }
+
+.menu {
+  position: absolute;
+  background: rgba(128, 128, 128, 0.75);
+  height: auto;
+  width: 100px;
+  display: flex;
+  flex-direction: column;
+  animation: open 0.75s;
+  overflow: hidden;
+}
+
+@keyframes open {
+  from {
+    width: 0;
+  }
+  to {
+    width: 100px;
+  }
+}
+
+.person-selector {
+  background: rgba(128, 128, 128);
+  color: white;
+  border: 1px solid black;
+  margin: 1px;
+  padding: 2px;
+}
+
+.person-selector:hover {
+  opacity: 0.8;
+  cursor: pointer;
+}
