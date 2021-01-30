@@ -1,8 +1,19 @@
-import image from '../media/maps_troy.jpeg';
 import '../styles/Picture.css';
 import { useEffect } from 'react';
+import firebase from 'firebase';
 
 const Picture = () => {
+
+  const storage = firebase.storage();
+  const storageRef = storage.ref('maps_troy.jpeg');
+
+  storageRef.getDownloadURL().then((url) => {
+    const pic = document.querySelector('#image');
+    pic.setAttribute('src', url);
+  }).catch((error) => {
+    console.log(error)
+  });
+
   // will proabaly put this into state
   let characters = { 'waldo': { x: 474, y: 1548 }, 'wanda': { x: 2141, y: 1395 }, 'odlaw': {x: 2446, y: 1504}, 'wizard': {x: 818, y: 248} };
 
@@ -62,7 +73,7 @@ const Picture = () => {
 
   return (
     <div className='picture'>
-      <img id='image' src={image} alt='Troy' />
+      <img id='image' alt='Troy' />
     </div>
   );
 };
