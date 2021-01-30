@@ -4,38 +4,58 @@ import { useEffect } from 'react';
 
 const Picture = () => {
   // will proabaly put this into state
-  let characters = ['waldo', 'wanda', 'odlaw', 'wizard'];
+  let characters = { 'waldo': { x: 474, y: 1548 }, 'wanda': { x: 2141, y: 1395 }, 'odlaw': {x: 2446, y: 1504}, 'wizard': {x: 818, y: 248} };
 
-  const popUpSelection = (coords) => {
+  const popUpSelection = (event) => {
+    const x = event.layerX;
+    const y = event.layerY;
     const selector = document.createElement('div');
     selector.classList.add('selector');    
-    selector.style = `left: ${coords.x}px; top: ${coords.y}px;`;
+    selector.style = `left: ${x - 25}px; top: ${y - 25}px;`;
     const pic = document.querySelector('.picture');
     pic.appendChild(selector);
   };
 
-  const dropDownSelection = (coords) => {
+  const dropDownSelection = (event) => {
+    const x = event.layerX;
+    const y = event.layerY;
     const menu = document.createElement('div');
     menu.classList.add('menu');
-    menu.style = `left: ${coords.x}px; top: ${coords.y}px;`;
-    characters.forEach((person) => {
+    menu.style = `left: ${x + 25}px; top: ${y + 25}px;`;
+    Object.keys(characters).forEach((person) => {
       const btn = document.createElement('button');
       btn.classList.add('person-selector');
       btn.textContent = person;
       btn.value = person;
       menu.appendChild(btn);
-    })
+      btn.addEventListener('click', () => {
+        makeGuess(person, x, y);
+      });
+      
+    });
     const pic = document.querySelector('.picture');
     pic.appendChild(menu);
   };
 
+  const makeGuess = (person, x, y) => {
+    if((x >= characters[person].x - 25 && x <= characters[person].x + 25) &&
+      (y >= characters[person].y - 30 && y <= characters[person].y + 30)) {
+      const char = document.querySelector(`#${person}-img`);
+      char.style = 'opacity: 0.5;';
+      delete characters[person];
+      const menu = document.querySelector('.menu');
+      const selector = document.querySelector('.selector');
+      menu.remove();
+      selector.remove();
+    };
+  };
 
   useEffect(() => {
     const img = document.getElementById('image');
     
     img.addEventListener('click', (e) => {
-      popUpSelection({ x: (e.layerX - 25), y: (e.layerY - 25) });
-      dropDownSelection( {x: e.layerX + 25, y: e.layerY + 25})
+      popUpSelection(e);
+      dropDownSelection(e);
     })
 
   }, []);
