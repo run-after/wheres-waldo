@@ -3,6 +3,10 @@ import { useEffect } from 'react';
 import firebase from 'firebase';
 
 const Picture = () => {
+
+  const db = firebase.firestore();
+  // I think I need to write end time to db, then display time
+
   // I can have a screen before this displays giving choices of maps
   // I can pass in the choice of map via props when this is rendered
   const storage = firebase.storage();
@@ -69,7 +73,21 @@ const Picture = () => {
       console.log('found', person);
       if (Object.keys(characters).length === 0) {
         // Handle game over situation
-        alert('you win')
+        let timeStart;
+        // Read timeStart from DB
+        db.collection('Troy').doc(firebase.auth().currentUser.uid).get().then((doc) => {
+          timeStart = doc.data().timeStart;
+          //Set end time to DB
+          db.collection('Troy').doc(firebase.auth().currentUser.uid).set({
+            timeStart: timeStart,
+            timeEnd: new Date().getTime()
+          });
+        });
+        const timer = document.querySelector('.timer');
+        timer.textContent = timer.textContent;
+        // Below will change. Will load scoreboard maybe
+        alert(`you win! Time is: ${timer.textContent}`);
+        // remove event listnener from image
       };
     } else {
       menu.remove();
