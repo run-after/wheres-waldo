@@ -1,0 +1,51 @@
+.block-out-box {
+  height: 90vh;
+  width: 90vw;
+  background: rgba(0, 0, 0, 0.9);
+  position: fixed;
+  z-index: 2;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  margin: auto;
+  border-radius: 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: white;
+  flex-direction: column;
+}
+
+.block-out-box h1 {
+  font-size: 3em;
+  margin: 10px;
+}
+
+.block-out-box p {
+  font-weight: bold;
+  margin: 10px;
+}
+
+.start-button {
+  background: rgba(128, 128, 128, 0.562);
+  border: 1px solid lime;
+  color: white;
+  padding: 20px;
+  border-radius: 10px;
+  margin: 20px;
+}
+
+.start-button:hover {
+  opacity: 0.5;
+  cursor: pointer;
+}
+
+.timer {
+  justify-self: center;
+  align-self: center;
+  color: white;
+  font-size: 2em;
+  grid-column: 1 / -1;
+  grid-row: 1 / -1;
+}
