@@ -1,7 +1,16 @@
 import { useEffect, useState } from 'react';
 import '../styles/Timer.css';
+import firebase from 'firebase';
+import 'firebase/firestore';// not sure if useful
 
 const Timer = () => {
+
+  const db = firebase.firestore();
+  const troy = db.collection('Troy');
+
+  //troy.doc('test').set({
+  //  timeStart: 45
+  //})
 
   const [timer, setTimer] = useState({
     timerOn: false,
@@ -13,6 +22,11 @@ const Timer = () => {
     const blockOut = document.querySelector('.block-out-box');
     blockOut.remove();
     let startTime = new Date().getTime();
+    // Save time start to DB
+    troy.doc(firebase.auth().currentUser.uid).set({
+      timeStart: startTime
+    });
+    ///////////////////////
     setInterval(() => {
       setTimer({
         timerOn: true,
