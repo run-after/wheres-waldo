@@ -15,6 +15,7 @@
   align-items: center;
   color: white;
   flex-direction: column;
+  text-align: center;
 }
 
 .block-out-box h1 {
