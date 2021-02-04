@@ -1,3 +1,4 @@
+import Timer from './Timer';
 import '../styles/Header.css';
 import firebase from 'firebase';
 
@@ -6,6 +7,8 @@ const Header = () => {
 
   const storage = firebase.storage();
   const storageRef = storage.ref();
+
+  // Figure out a way to DRY this up
 
   storageRef.child('waldo.png').getDownloadURL().then((url) => {
     const waldo = document.querySelector('#waldo-img');
@@ -35,6 +38,8 @@ const Header = () => {
     console.log(error)
   });
 
+
+
   return (
     <div className='header'>
       <div className='character-container'>
@@ -47,7 +52,7 @@ const Header = () => {
         </div>
         
       </div>
-      <div className='timer'>00:00:00</div>{/* This is a placeholder. Will have a timer from backend */}
+      <Timer />
     </div>
     
   )

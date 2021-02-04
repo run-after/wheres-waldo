@@ -1,15 +1,19 @@
 .header {
-  display: flex;
+  display: grid;
+  grid-auto-flow: column;
   position: fixed;
   top: 0;
   left: 0;
-  flex-direction: row;
   background: rgba(169, 169, 169, 0.9);
   height: 100px;
   width: 100%;
+  z-index: 1;
 }
 
 .character-container {
+  justify-self: start;
+  grid-column: 1 / -1;
+  grid-row: 1 / -1;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -27,10 +31,4 @@
 .characters > * {
   align-self: flex-end;
   height: 50px;
-}
-
-.timer {
-  margin: auto;
-  color: white;
-  font-size: 2em;
 }
