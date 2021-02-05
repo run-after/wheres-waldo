@@ -5,13 +5,13 @@ import firebase from 'firebase';
 const Picture = () => {
 
   const db = firebase.firestore();
-  // I think I need to write end time to db, then display time
 
   // I can have a screen before this displays giving choices of maps
   // I can pass in the choice of map via props when this is rendered
   const storage = firebase.storage();
   const storageRef = storage.ref('maps_troy.jpeg');
-
+  
+  // get image from DB and set src on #image
   storageRef.getDownloadURL().then((url) => {
     const pic = document.querySelector('#image');
     pic.setAttribute('src', url);
@@ -19,9 +19,18 @@ const Picture = () => {
     console.log(error)
   });
 
-  // will proabaly put this into state
-  // Or this can be pulled from DB based on what map is loaded
-  let characters = { 'waldo': { x: 474, y: 1548 }, 'wanda': { x: 2141, y: 1395 }, 'odlaw': {x: 2446, y: 1504}, 'wizard': {x: 818, y: 248} };
+  // Initial declaration of characters object
+  let characters = {};
+  
+  // get all coords from DB and set them in characters object
+  db.collection('Troy').doc('listOfCharacters').get().then((doc) => {
+      const charArray = doc.data().characters;
+      charArray.forEach((char) => {
+        db.collection('Troy').doc('characters').collection(char).doc('coords').get().then((doc) => {
+          characters[char] = doc.data();
+        });
+      });
+    });
 
   const popUpSelection = (event) => {
     const currentSelector = document.querySelector('.selector');
@@ -70,7 +79,7 @@ const Picture = () => {
       menu.remove();
       selector.classList.remove('selector');
       selector.classList.add('correct');
-      console.log('found', person);
+
       if (Object.keys(characters).length === 0) {
         // Handle game over situation
         let timeStart;
@@ -81,7 +90,7 @@ const Picture = () => {
           db.collection('Troy').doc(firebase.auth().currentUser.uid).set({
             timeStart: timeStart,
             timeEnd: new Date().getTime()
-          });
+          })
         });
         const timer = document.querySelector('.timer');
         timer.textContent = timer.textContent;
