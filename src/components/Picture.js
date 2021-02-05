@@ -90,7 +90,11 @@ const Picture = () => {
           db.collection('Troy').doc(firebase.auth().currentUser.uid).set({
             timeStart: timeStart,
             timeEnd: new Date().getTime()
-          })
+          }).then(() => {
+            firebase.auth().signOut().then(() => {
+            console.log('signed out');
+            });
+          });
         });
         const timer = document.querySelector('.timer');
         timer.textContent = timer.textContent;
