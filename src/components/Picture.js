@@ -2,7 +2,9 @@ import '../styles/Picture.css';
 import { useEffect } from 'react';
 import firebase from 'firebase';
 
-const Picture = () => {
+const Picture = (props) => {
+
+  const characters = props.characters;
 
   const db = firebase.firestore();
 
@@ -10,27 +12,19 @@ const Picture = () => {
   // I can pass in the choice of map via props when this is rendered
   const storage = firebase.storage();
   const storageRef = storage.ref('maps_troy.jpeg');
-  
-  // get image from DB and set src on #image
-  storageRef.getDownloadURL().then((url) => {
-    const pic = document.querySelector('#image');
-    pic.setAttribute('src', url);
-  }).catch((error) => {
-    console.log(error)
-  });
 
-  // Initial declaration of characters object
-  let characters = {};
-  
-  // get all coords from DB and set them in characters object
-  db.collection('Troy').doc('listOfCharacters').get().then((doc) => {
-      const charArray = doc.data().characters;
-      charArray.forEach((char) => {
-        db.collection('Troy').doc('characters').collection(char).doc('coords').get().then((doc) => {
-          characters[char] = doc.data();
-        });
-      });
+  const loadMap = () => {
+    storageRef.getDownloadURL().then((url) => {
+      const pic = document.querySelector('#image');
+      pic.setAttribute('src', url);
+    }).catch((error) => {
+      console.log(error)
     });
+  };
+  
+  const isGameOver = () => {
+    return Object.keys(characters).length === 0;
+  };
 
   const popUpSelection = (event) => {
     const currentSelector = document.querySelector('.selector');
@@ -80,8 +74,7 @@ const Picture = () => {
       selector.classList.remove('selector');
       selector.classList.add('correct');
 
-      if (Object.keys(characters).length === 0) {
-        // Handle game over situation
+      if (isGameOver()) {
         let timeStart;
         // Read timeStart from DB
         db.collection('Troy').doc(firebase.auth().currentUser.uid).get().then((doc) => {
@@ -97,6 +90,7 @@ const Picture = () => {
           });
         });
         const timer = document.querySelector('.timer');
+        // stop timer
         timer.textContent = timer.textContent;
         // Below will change. Will load scoreboard maybe
         alert(`you win! Time is: ${timer.textContent}`);
@@ -116,6 +110,8 @@ const Picture = () => {
       popUpSelection(e);
       dropDownSelection(e);
     });
+
+    loadMap();
 
   }, []);
   // If map is passed in via props, so too would this 'alt'
