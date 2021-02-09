@@ -76,6 +76,7 @@ const Picture = (props) => {
 
       if (isGameOver()) {
         let timeStart;
+        let endTime = new Date().getTime();
         // Read timeStart from DB
         db.collection('Troy').doc(firebase.auth().currentUser.uid).get().then((doc) => {
           timeStart = doc.data().timeStart;
@@ -83,6 +84,9 @@ const Picture = (props) => {
           db.collection('Troy').doc(firebase.auth().currentUser.uid).set({
             timeStart: timeStart,
             timeEnd: new Date().getTime()
+          }).then(() => {
+            // Show scoreboard, don't alert
+            alert(`You win! Time is: ${formatTimer(endTime - timeStart)}`);
           }).then(() => {
             firebase.auth().signOut().then(() => {
             console.log('signed out');
@@ -92,15 +96,33 @@ const Picture = (props) => {
         const timer = document.querySelector('.timer');
         // stop timer
         timer.textContent = timer.textContent;
-        // Below will change. Will load scoreboard maybe
-        alert(`you win! Time is: ${timer.textContent}`);
-        // remove event listnener from image
       };
     } else {
       menu.remove();
       selector.remove();
       console.log('Wrong');
     };
+  };
+
+  // Maybe can move this to a different module... this and from Timer
+  const formatTimer = (time) => {
+    let min = Math.floor(time / 60000);
+    if (min > 59) {
+      min = min % 60;
+    };
+    let sec = Math.floor(time / 1000);
+    if (sec > 59) {
+      sec = sec % 60;
+    };
+    let centiSec = Math.floor(time / 100);
+    if (centiSec > 10) {
+      centiSec = centiSec % 10;
+    };
+    let milSec = Math.floor(time / 10);
+    if (milSec > 10) {
+      milSec = milSec % 10;
+    };
+    return `${min.toString().padStart(2, '0')}:${sec.toString().padStart(2, '0')}:${centiSec}${milSec}`;
   };
 
   useEffect(() => {
