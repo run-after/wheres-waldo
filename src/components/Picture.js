@@ -1,8 +1,11 @@
 import '../styles/Picture.css';
-import { useEffect } from 'react';
+import { useState, useEffect } from 'react';
 import firebase from 'firebase';
+import Scoreboard from './Scoreboard';
 
 const Picture = (props) => {
+
+  const [score, setScore] = useState(0);
 
   const characters = props.characters;
 
@@ -12,6 +15,9 @@ const Picture = (props) => {
   // I can pass in the choice of map via props when this is rendered
   const storage = firebase.storage();
   const storageRef = storage.ref('maps_troy.jpeg');
+
+  let timeStart;
+  let timeEnd;
 
   const loadMap = () => {
     storageRef.getDownloadURL().then((url) => {
@@ -75,8 +81,7 @@ const Picture = (props) => {
       selector.classList.add('correct');
 
       if (isGameOver()) {
-        let timeStart;
-        let endTime = new Date().getTime();
+        timeEnd = new Date().getTime();
         // Read timeStart from DB
         db.collection('Troy').doc(firebase.auth().currentUser.uid).get().then((doc) => {
           timeStart = doc.data().timeStart;
@@ -85,8 +90,9 @@ const Picture = (props) => {
             timeStart: timeStart,
             timeEnd: new Date().getTime()
           }).then(() => {
+            setScore(timeEnd - timeStart);
             // Show scoreboard, don't alert
-            alert(`You win! Time is: ${formatTimer(endTime - timeStart)}`);
+            alert(`You win! Time is: ${formatTimer(timeEnd - timeStart)}`);
           }).then(() => {
             firebase.auth().signOut().then(() => {
             console.log('signed out');
@@ -103,7 +109,7 @@ const Picture = (props) => {
       console.log('Wrong');
     };
   };
-
+  
   // Maybe can move this to a different module... this and from Timer
   const formatTimer = (time) => {
     let min = Math.floor(time / 60000);
@@ -140,6 +146,7 @@ const Picture = (props) => {
   return (
     <div className='picture'>
       <img id='image' alt='Troy' />
+      {isGameOver() && <Scoreboard score={score}/>}
     </div>
   );
 };
