@@ -91,8 +91,6 @@ const Picture = (props) => {
             timeEnd: new Date().getTime()
           }).then(() => {
             setScore(timeEnd - timeStart);
-            // Show scoreboard, don't alert
-            alert(`You win! Time is: ${formatTimer(timeEnd - timeStart)}`);
           }).then(() => {
             firebase.auth().signOut().then(() => {
             console.log('signed out');
@@ -101,7 +99,7 @@ const Picture = (props) => {
         });
         const timer = document.querySelector('.timer');
         // stop timer
-        timer.textContent = timer.textContent;
+        timer.remove();
       };
     } else {
       menu.remove();
@@ -146,7 +144,7 @@ const Picture = (props) => {
   return (
     <div className='picture'>
       <img id='image' alt='Troy' />
-      {isGameOver() && <Scoreboard score={score}/>}
+      {isGameOver() && <Scoreboard score={score} name={props.name}/>}
     </div>
   );
 };

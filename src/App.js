@@ -5,6 +5,9 @@ import firebase from 'firebase';
 import { useEffect, useState } from 'react';
 
 function App() {
+
+  const [name, setName] = useState('');
+
   const db = firebase.firestore();
 
   const [characters, setCharacters] = useState({});
@@ -43,22 +46,21 @@ function App() {
 
   return (
     <div className='container'>
-      <Header />
-      {Object.keys(characters).length === 4 && <Picture characters={characters}/>}
+      <Header setName={setName}/>
+      {Object.keys(characters).length === 4 && <Picture characters={characters} name={name} />}
     </div>
   );
 };
 
 export default App;
 
-// signing in ANON
-// write startTime to DB
-// when finished, write endTime to DB
-// then sign out
-// load characters positions from DB
-
 // TODO:
-// calculate time from DB
-// determine if high score or not
+
+// Determine if high score or not
+
 // Make initial screen that allows selection of map
 // in Picture - remove event listener after game over
+
+// Timer - remove setInterval after game over
+
+// Make high score board and show after game over

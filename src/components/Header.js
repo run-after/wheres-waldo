@@ -4,7 +4,7 @@ import firebase from 'firebase';
 import 'firebase/storage';// not sure if doing anything
 
 
-const Header = () => {
+const Header = (props) => {
 
   const storage = firebase.storage();
   const storageRef = storage.ref();
@@ -50,7 +50,7 @@ const Header = () => {
           <img id='wizard-img' alt='wizard'/>
         </div>
       </div>
-      <Timer />
+      <Timer setName={props.setName}/>
     </div>
     
   )

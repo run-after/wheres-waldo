@@ -1,16 +1,12 @@
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 import '../styles/Timer.css';
 import firebase from 'firebase';
 import 'firebase/firestore';// not sure if useful
 
-const Timer = () => {
+const Timer = (props) => {
 
   const db = firebase.firestore();
   const troy = db.collection('Troy');
-
-  //troy.doc('test').set({
-  //  timeStart: 45
-  //})
 
   const [timer, setTimer] = useState({
     timerOn: false,
@@ -19,6 +15,8 @@ const Timer = () => {
   });
   // This is temporary. I will get startTime from DB
   const startTimer = () => {
+    const name = document.querySelector('#name');
+    props.setName(name.value);
     const blockOut = document.querySelector('.block-out-box');
     blockOut.remove();
     let startTime = new Date().getTime();
@@ -27,12 +25,14 @@ const Timer = () => {
       timeStart: startTime
     });
     ///////////////////////
+
+    // This updates timer on screen
     setInterval(() => {
       setTimer({
         timerOn: true,
         timeStart: startTime,
         time: new Date().getTime() - startTime
-      })
+      });
     }, 10);
   };
 
@@ -61,7 +61,11 @@ const Timer = () => {
       <div className='block-out-box'>
         <h1>Click to begin</h1>
         <p>When you click start, your timer will begin. Find all 4 characters</p>
-        <button className='start-button' onClick={startTimer}>Start</button>
+        <form onSubmit={startTimer}> 
+          <input required={true} id='name' type='text' placeholder='Please enter your name' />
+          <button type='submit' className='start-button'>Start</button>
+        </form>
+        
       </div>
       {formatTimer(timer.time)}
     </div>
