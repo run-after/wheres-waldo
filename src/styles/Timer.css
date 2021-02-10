@@ -50,3 +50,13 @@
   grid-column: 1 / -1;
   grid-row: 1 / -1;
 }
+
+form {
+  display: flex;
+  flex-direction: column;
+}
+
+#name {
+  margin: 20px;
+  height: 25px;
+}
