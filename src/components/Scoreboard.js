@@ -16,9 +16,7 @@ const Scoreboard = (props) => {
       scores.scores.splice(index, 0, player);
       scores.scores.pop();
       // Write scores to DB
-    db.collection('Troy').doc('hiScores').set(scores).then(() => {
-      console.log('written');
-    });
+      db.collection('Troy').doc('hiScores').set(scores);
     };
   }).then(() => {
     // display existing scores
@@ -58,6 +56,9 @@ const Scoreboard = (props) => {
 
   const timer = document.querySelector('.timer');
   timer.textContent = formatTimer(props.score);
+
+  // Delete start/stop time from DB
+  db.collection('Troy').doc(firebase.auth().currentUser.uid).delete();
 
   return (
     <div className='scoreboard'>
