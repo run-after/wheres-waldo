@@ -74,7 +74,7 @@ const Picture = (props) => {
     if((x >= characters[person].x - 25 && x <= characters[person].x + 25) &&
       (y >= characters[person].y - 30 && y <= characters[person].y + 30)) {
       const char = document.querySelector(`#${person}-img`);
-      char.style = 'opacity: 0.5;';
+      char.style = 'opacity: 0.25;';
       delete characters[person];
       menu.remove();
       selector.classList.remove('selector');
@@ -99,7 +99,7 @@ const Picture = (props) => {
         });
         const timer = document.querySelector('.timer');
         // stop timer
-        timer.remove();
+        timer.textContent = '';
       };
     } else {
       menu.remove();
