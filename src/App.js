@@ -1,7 +1,9 @@
 import './styles/App.css';
 import Picture from './components/Picture';
 import Header from './components/Header';
-import firebase from 'firebase';
+import firebase from 'firebase/app';
+import 'firebase/firestore';
+import 'firebase/auth';
 import { useEffect, useState } from 'react';
 
 function App() {

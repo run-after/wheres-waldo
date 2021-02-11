@@ -1,5 +1,6 @@
 import '../styles/Scoreboard.css';
-import firebase from 'firebase';
+import firebase from 'firebase/app';
+import 'firebase/firestore';
 
 const Scoreboard = (props) => {
  

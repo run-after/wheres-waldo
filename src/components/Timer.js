@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import '../styles/Timer.css';
-import firebase from 'firebase';
-import 'firebase/firestore';// not sure if useful
+import firebase from 'firebase/app';
+import 'firebase/firestore';
 
 const Timer = (props) => {
 

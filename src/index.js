@@ -3,9 +3,6 @@ import ReactDOM from 'react-dom';
 import App from './App';
 import './styles/reset.css';
 import firebase from 'firebase/app';
-import 'firebase/storage';
-import 'firebase/firestore';
-import 'firebase/auth';
 
 firebase.initializeApp({
   apiKey: "AIzaSyDfrvu6lFPHgpa-VfobKgF3leWgziYxpqg",

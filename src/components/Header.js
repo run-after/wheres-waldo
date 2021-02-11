@@ -1,6 +1,6 @@
 import Timer from './Timer';
 import '../styles/Header.css';
-import firebase from 'firebase';
+import firebase from 'firebase/app';
 import 'firebase/storage';// not sure if doing anything
 
 

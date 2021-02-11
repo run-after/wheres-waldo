@@ -1,7 +1,9 @@
+import Scoreboard from './Scoreboard';
 import '../styles/Picture.css';
 import { useState, useEffect } from 'react';
-import firebase from 'firebase';
-import Scoreboard from './Scoreboard';
+import firebase from 'firebase/app';
+import 'firebase/firestore';
+import 'firebase/storage';
 
 const Picture = (props) => {
 
