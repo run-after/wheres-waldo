@@ -27,6 +27,7 @@
   justify-content: space-between;
   align-items: center;
   color: white;
+  overflow: hidden;
 }
 
 .score-spot .place {
@@ -64,7 +65,7 @@
   margin-right: 10px;
 }
 
-@media (max-width: 450px) {
+@media (max-width: 600px) {
   .scoreboard {
     width: 100%;
   }
