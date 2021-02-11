@@ -59,8 +59,10 @@ const Timer = (props) => {
   return (
     <div className='timer'>
       <div className='block-out-box'>
-        <h1>Click to begin</h1>
-        <p>When you click start, your timer will begin. Find all 4 characters</p>
+        <h1>Click 'Start' to begin</h1>
+        <p>Enter your name, then click start.</p>
+        <p>Your timer will begin. Find all 4 characters.</p>
+        <p>(found in upper right-hand corner)</p>
         <form onSubmit={startTimer}> 
           <input required={true} maxLength='15' id='name' type='text' placeholder='Please enter your name' />
           <button type='submit' className='start-button'>Start</button>

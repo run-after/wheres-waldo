@@ -27,6 +27,7 @@ const Picture = (props) => {
       pic.setAttribute('src', url);
     }).catch((error) => {
       console.log(error)
+      window.location.reload();
     });
   };
   

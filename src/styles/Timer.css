@@ -24,7 +24,6 @@
 }
 
 .block-out-box p {
-  font-weight: bold;
   margin: 10px;
 }
 
@@ -59,4 +58,14 @@ form {
 #name {
   margin: 20px;
   height: 25px;
+}
+
+@media (max-width: 1180px) {
+  .block-out-box h1 {
+    font-size: 2em;
+  }
+
+  .block-out-box p {
+    font-size: 0.5em;
+  }
 }
