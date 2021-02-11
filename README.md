@@ -1,5 +1,10 @@
 # Where's Waldo?
 
+![Waldo](https://github.com/run-after/wheres-waldo/blob/main/src/media/waldo.png)
+![Wilma](https://github.com/run-after/wheres-waldo/blob/main/src/media/wilma.png)
+![Wizard](https://github.com/run-after/wheres-waldo/blob/main/src/media/wizard.png)
+![Odlaw](https://github.com/run-after/wheres-waldo/blob/main/src/media/odlaw.png)
+
 - **Built with ReactJS**
 - **Utilized Firebase Storage for image storage**
 - **Utilized Fireauth for anonymous log-in**
