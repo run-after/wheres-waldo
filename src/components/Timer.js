@@ -62,7 +62,7 @@ const Timer = (props) => {
         <h1>Click to begin</h1>
         <p>When you click start, your timer will begin. Find all 4 characters</p>
         <form onSubmit={startTimer}> 
-          <input required={true} id='name' type='text' placeholder='Please enter your name' />
+          <input required={true} maxLength='15' id='name' type='text' placeholder='Please enter your name' />
           <button type='submit' className='start-button'>Start</button>
         </form>
         
