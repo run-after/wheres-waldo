@@ -1,9 +1,9 @@
 # Where's Waldo?
 
-![Waldo](https://github.com/run-after/wheres-waldo/blob/main/src/media/waldo.png)
-![Wilma](https://github.com/run-after/wheres-waldo/blob/main/src/media/wilma.png)
-![Wizard](https://github.com/run-after/wheres-waldo/blob/main/src/media/wizard.png)
-![Odlaw](https://github.com/run-after/wheres-waldo/blob/main/src/media/odlaw.png)
+![Waldo](https://github.com/run-after/wheres-waldo/blob/main/src/media/waldo.png =25X100)
+![Wilma](https://github.com/run-after/wheres-waldo/blob/main/src/media/wilma.png =25X100)
+![Wizard](https://github.com/run-after/wheres-waldo/blob/main/src/media/wizard.png =25X100)
+![Odlaw](https://github.com/run-after/wheres-waldo/blob/main/src/media/odlaw.png =25X100)
 
 - **Built with ReactJS**
 - **Utilized Firebase Storage for image storage**
