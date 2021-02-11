@@ -34,9 +34,7 @@ function App() {
 
   useEffect(() => {
 
-    firebase.auth().signInAnonymously().then(() => {
-      console.log('signedin as', firebase.auth().currentUser.uid);
-    }).catch((error) => {
+    firebase.auth().signInAnonymously().catch((error) => {
       console.log(error)
     });   
     
@@ -56,11 +54,9 @@ export default App;
 
 // TODO:
 
-// Determine if high score or not
-
 // Make initial screen that allows selection of map
 // in Picture - remove event listener after game over
 
 // Timer - remove setInterval after game over
 
-// Make high score board and show after game over
+// Maybe add a restart button? After game over
