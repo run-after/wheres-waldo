@@ -1,12 +1,6 @@
 # Where's Waldo?
 
-<img src='https://github.com/run-after/wheres-waldo/blob/main/src/media/waldo.png' alt='waldo' height='100px' />
-  
-<img src='https://github.com/run-after/wheres-waldo/blob/main/src/media/wilma.png' alt='wilma' height='100px' />
-  
-<img src='https://github.com/run-after/wheres-waldo/blob/main/src/media/wizard.png' alt='wizard' height='100px' />
-  
-<img src='https://github.com/run-after/wheres-waldo/blob/main/src/media/odlaw.png' alt='odlaw' height='100px' />
+<img src='https://github.com/run-after/wheres-waldo/blob/main/src/media/Screenshot.jpg' alt='waldo' width='100%' />
   
 - **Built with ReactJS**
 - **Utilized Firebase Storage for image storage**
