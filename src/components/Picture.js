@@ -91,10 +91,6 @@ const Picture = (props) => {
             timeEnd: new Date().getTime()
           }).then(() => {
             setScore(timeEnd - timeStart);
-          }).then(() => {
-            firebase.auth().signOut().then(() => {
-            console.log('signed out');
-            });
           });
         });
         const timer = document.querySelector('.timer');
