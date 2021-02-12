@@ -1,7 +1,8 @@
 import Timer from './Timer';
 import '../styles/Header.css';
 import firebase from 'firebase/app';
-import 'firebase/storage';// not sure if doing anything
+import 'firebase/storage';
+import 'firebase/firestore';
 
 
 const Header = (props) => {
@@ -9,34 +10,21 @@ const Header = (props) => {
   const storage = firebase.storage();
   const storageRef = storage.ref();
 
-  // Figure out a way to DRY this up
+  const db = firebase.firestore();
 
-  storageRef.child('waldo.png').getDownloadURL().then((url) => {
-    const waldo = document.querySelector('#waldo-img');
-    waldo.setAttribute('src', url);
-  }).catch((error) => {
-    console.log(error)
-  });
+  let characters;
 
-  storageRef.child('wilma.png').getDownloadURL().then((url) => {
-    const waldo = document.querySelector('#wilma-img');
-    waldo.setAttribute('src', url);
-  }).catch((error) => {
-    console.log(error)
-  });
-
-  storageRef.child('odlaw.png').getDownloadURL().then((url) => {
-    const waldo = document.querySelector('#odlaw-img');
-    waldo.setAttribute('src', url);
-  }).catch((error) => {
-    console.log(error)
-  });
-
-  storageRef.child('wizard.png').getDownloadURL().then((url) => {
-    const waldo = document.querySelector('#wizard-img');
-    waldo.setAttribute('src', url);
-  }).catch((error) => {
-    console.log(error)
+  db.collection('Troy').doc('listOfCharacters').get().then((doc) => {
+    characters = doc.data().characters;
+  }).then(() => {
+    characters.forEach((character) => {
+      storageRef.child(`${character}.png`).getDownloadURL().then((url) => {
+        const characterImg = document.querySelector(`#${character}-img`);
+        characterImg.setAttribute('src', url);
+      }).catch((error) => {
+        console.log(error)
+      });
+    });  
   });
 
   return (
