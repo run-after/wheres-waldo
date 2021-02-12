@@ -1,8 +1,8 @@
 {
   "files": {
     "main.css": "/wheres-waldo/static/css/main.c9ffc98b.chunk.css",
-    "main.js": "/wheres-waldo/static/js/main.8bf4b847.chunk.js",
-    "main.js.map": "/wheres-waldo/static/js/main.8bf4b847.chunk.js.map",
+    "main.js": "/wheres-waldo/static/js/main.a31b755a.chunk.js",
+    "main.js.map": "/wheres-waldo/static/js/main.a31b755a.chunk.js.map",
     "runtime-main.js": "/wheres-waldo/static/js/runtime-main.5f2fc334.js",
     "runtime-main.js.map": "/wheres-waldo/static/js/runtime-main.5f2fc334.js.map",
     "static/js/2.b8c60335.chunk.js": "/wheres-waldo/static/js/2.b8c60335.chunk.js",
@@ -15,6 +15,6 @@
     "static/js/runtime-main.5f2fc334.js",
     "static/js/2.b8c60335.chunk.js",
     "static/css/main.c9ffc98b.chunk.css",
-    "static/js/main.8bf4b847.chunk.js"
+    "static/js/main.a31b755a.chunk.js"
   ]
 }
