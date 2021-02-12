@@ -1,4 +1,5 @@
 import '../styles/Scoreboard.css';
+import formatTime from '../scripts/formatTime';
 import firebase from 'firebase/app';
 import 'firebase/firestore';
 
@@ -26,37 +27,12 @@ const Scoreboard = (props) => {
       const name = place.querySelector('.name');
       name.textContent = scores.scores[i].name;
       const time = place.querySelector('.time');
-      time.textContent = formatTimer(scores.scores[i].time);
+      time.textContent = formatTime(scores.scores[i].time);
     });
   });
 
-  // Maybe can move this to a different module... this and from Timer
-  const formatTimer = (time) => {
-    if (time === 9999999999) {
-      return '99:99:99';
-    } else {
-      let min = Math.floor(time / 60000);
-      if (min > 59) {
-        min = min % 60;
-      };
-      let sec = Math.floor(time / 1000);
-      if (sec > 59) {
-        sec = sec % 60;
-      };
-      let centiSec = Math.floor(time / 100);
-      if (centiSec > 10) {
-        centiSec = centiSec % 10;
-      };
-      let milSec = Math.floor(time / 10);
-      if (milSec > 10) {
-        milSec = milSec % 10;
-      };
-      return `${min.toString().padStart(2, '0')}:${sec.toString().padStart(2, '0')}:${centiSec}${milSec}`;
-    }
-  };
-
   const timer = document.querySelector('.timer');
-  timer.textContent = formatTimer(props.score);
+  timer.textContent = formatTime(props.score);
 
   // Delete start/stop time from DB
   db.collection('Troy').doc(firebase.auth().currentUser.uid).delete();
