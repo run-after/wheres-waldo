@@ -14,7 +14,7 @@ const Header = (props) => {
 
   let characters;
 
-  db.collection('Troy').doc('listOfCharacters').get().then((doc) => {
+  db.collection(props.map).doc('listOfCharacters').get().then((doc) => {
     characters = doc.data().characters;
   }).then(() => {
     characters.forEach((character) => {
@@ -38,7 +38,7 @@ const Header = (props) => {
           <img id='wizard-img' alt='wizard'/>
         </div>
       </div>
-      <Timer setName={props.setName}/>
+      <Timer setName={props.setName} map={props.map}/>
     </div>
     
   )

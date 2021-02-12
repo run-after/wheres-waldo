@@ -1,0 +1,43 @@
+.map-selection {
+  position: fixed;
+  height: 100%;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: black;
+  color: white;
+  gap: 10px;
+}
+
+.map-choice {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  align-items: center;
+  gap: 20px;
+  border: 1px solid white;
+  padding: 20px;
+}
+
+.map-choice img {
+  height: 100px;
+  width: 200px;
+}
+
+.map-choice p {
+  text-align: center;
+}
+
+.map-choice button {
+  background: rgba(128, 128, 128, 0.562);
+  border: 1px solid lime;
+  color: white;
+  padding: 20px;
+  border-radius: 10px;
+}
+
+.map-choice button:hover {
+  opacity: 0.5;
+  cursor: pointer;
+}

@@ -1,8 +1,8 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import App from './App';
 import './styles/reset.css';
 import firebase from 'firebase/app';
+import MapSelection from './components/MapSelection';
 
 firebase.initializeApp({
   apiKey: "AIzaSyDfrvu6lFPHgpa-VfobKgF3leWgziYxpqg",
@@ -15,7 +15,7 @@ firebase.initializeApp({
 
 ReactDOM.render(
   <React.StrictMode>
-    <App />
+    <MapSelection />
   </React.StrictMode>,
   document.getElementById('root')
 );

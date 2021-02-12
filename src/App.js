@@ -6,7 +6,7 @@ import 'firebase/firestore';
 import 'firebase/auth';
 import { useEffect, useState } from 'react';
 
-function App() {
+function App(props) {
 
   const [name, setName] = useState('');
 
@@ -17,10 +17,10 @@ function App() {
   // get all coords from DB and set them in characters object
   const loadCharacters = () => {
     let tempCharacters = {};
-    db.collection('Troy').doc('listOfCharacters').get().then((doc) => {
+    db.collection(props.map).doc('listOfCharacters').get().then((doc) => {
       const charArray = doc.data().characters;
       charArray.forEach((character) => {
-        db.collection('Troy').doc('characters')
+        db.collection(props.map).doc('characters')
           .collection(character)
           .doc('coords')
           .get()
@@ -45,9 +45,12 @@ function App() {
   }, []);
 
   return (
-    <div className='container'>
-      <Header setName={setName}/>
-      {Object.keys(characters).length === 4 && <Picture characters={characters} name={name} />}
+    <div className='app'>
+      <Header setName={setName} map={props.map}/>
+      {
+        Object.keys(characters).length === 4 &&
+        <Picture characters={characters} name={name} map={props.map} />
+      }
     </div>
   );
 };

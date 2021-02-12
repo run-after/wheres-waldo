@@ -7,7 +7,7 @@ import 'firebase/firestore';
 const Timer = (props) => {
 
   const db = firebase.firestore();
-  const troy = db.collection('Troy');
+  const troy = db.collection(props.map);
 
   const [timer, setTimer] = useState({
     timeStart: 0,

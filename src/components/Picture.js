@@ -6,6 +6,7 @@ import 'firebase/firestore';
 import 'firebase/storage';
 
 const Picture = (props) => {
+  console.log(props.map)
 
   const [score, setScore] = useState(0);
 
@@ -13,10 +14,8 @@ const Picture = (props) => {
 
   const db = firebase.firestore();
 
-  // I can have a screen before this displays giving choices of maps
-  // I can pass in the choice of map via props when this is rendered
   const storage = firebase.storage();
-  const storageRef = storage.ref('maps_troy.jpeg');
+  const storageRef = storage.ref(`${props.map}.jpeg`);
 
   let timeStart;
   let timeEnd;
@@ -86,10 +85,10 @@ const Picture = (props) => {
       if (isGameOver()) {
         timeEnd = new Date().getTime();
         // Read timeStart from DB
-        db.collection('Troy').doc(firebase.auth().currentUser.uid).get().then((doc) => {
+        db.collection(props.map).doc(firebase.auth().currentUser.uid).get().then((doc) => {
           timeStart = doc.data().timeStart;
           //Set end time to DB
-          db.collection('Troy').doc(firebase.auth().currentUser.uid).set({
+          db.collection(props.map).doc(firebase.auth().currentUser.uid).set({
             timeStart: timeStart,
             timeEnd: new Date().getTime()
           }).then(() => {
@@ -117,12 +116,22 @@ const Picture = (props) => {
 
     loadMap();
 
+    const mapSelection = document.querySelector('.map-selection');
+    mapSelection.remove();
+
   }, []);
-  // If map is passed in via props, so too would this 'alt'
+
   return (
     <div className='picture'>
-      <img id='image' alt='Troy' />
-      {isGameOver() && <Scoreboard score={score} name={props.name}/>}
+      <img id='image' alt={props.map} />
+      {
+        isGameOver() &&
+        <Scoreboard
+          score={score}
+          name={props.name}
+          map={props.map}
+        />
+      }
     </div>
   );
 };

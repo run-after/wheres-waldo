@@ -9,7 +9,7 @@ const Scoreboard = (props) => {
 
   let scores;
 
-  db.collection('Troy').doc('hiScores').get().then((doc) => {
+  db.collection(props.map).doc('hiScores').get().then((doc) => {
     scores = doc.data();
   }).then(() => {
     let index = scores.scores.findIndex(i => props.score < i.time); 
@@ -18,7 +18,7 @@ const Scoreboard = (props) => {
       scores.scores.splice(index, 0, player);
       scores.scores.pop();
       // Write scores to DB
-      db.collection('Troy').doc('hiScores').set(scores);
+      db.collection(props.map).doc('hiScores').set(scores);
     };
   }).then(() => {
     // display existing scores
@@ -35,7 +35,7 @@ const Scoreboard = (props) => {
   timer.textContent = formatTime(props.score);
 
   // Delete start/stop time from DB
-  db.collection('Troy').doc(firebase.auth().currentUser.uid).delete();
+  db.collection(props.map).doc(firebase.auth().currentUser.uid).delete();
 
   return (
     <div className='scoreboard'>
