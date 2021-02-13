@@ -1,20 +1,20 @@
 {
   "files": {
-    "main.css": "/wheres-waldo/static/css/main.c9ffc98b.chunk.css",
-    "main.js": "/wheres-waldo/static/js/main.dd27c5cb.chunk.js",
-    "main.js.map": "/wheres-waldo/static/js/main.dd27c5cb.chunk.js.map",
+    "main.css": "/wheres-waldo/static/css/main.6d35a886.chunk.css",
+    "main.js": "/wheres-waldo/static/js/main.950aeb5e.chunk.js",
+    "main.js.map": "/wheres-waldo/static/js/main.950aeb5e.chunk.js.map",
     "runtime-main.js": "/wheres-waldo/static/js/runtime-main.5f2fc334.js",
     "runtime-main.js.map": "/wheres-waldo/static/js/runtime-main.5f2fc334.js.map",
-    "static/js/2.b8c60335.chunk.js": "/wheres-waldo/static/js/2.b8c60335.chunk.js",
-    "static/js/2.b8c60335.chunk.js.map": "/wheres-waldo/static/js/2.b8c60335.chunk.js.map",
+    "static/js/2.c3e92a17.chunk.js": "/wheres-waldo/static/js/2.c3e92a17.chunk.js",
+    "static/js/2.c3e92a17.chunk.js.map": "/wheres-waldo/static/js/2.c3e92a17.chunk.js.map",
     "index.html": "/wheres-waldo/index.html",
-    "static/css/main.c9ffc98b.chunk.css.map": "/wheres-waldo/static/css/main.c9ffc98b.chunk.css.map",
-    "static/js/2.b8c60335.chunk.js.LICENSE.txt": "/wheres-waldo/static/js/2.b8c60335.chunk.js.LICENSE.txt"
+    "static/css/main.6d35a886.chunk.css.map": "/wheres-waldo/static/css/main.6d35a886.chunk.css.map",
+    "static/js/2.c3e92a17.chunk.js.LICENSE.txt": "/wheres-waldo/static/js/2.c3e92a17.chunk.js.LICENSE.txt"
   },
   "entrypoints": [
     "static/js/runtime-main.5f2fc334.js",
-    "static/js/2.b8c60335.chunk.js",
-    "static/css/main.c9ffc98b.chunk.css",
-    "static/js/main.dd27c5cb.chunk.js"
+    "static/js/2.c3e92a17.chunk.js",
+    "static/css/main.6d35a886.chunk.css",
+    "static/js/main.950aeb5e.chunk.js"
   ]
 }
