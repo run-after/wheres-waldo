@@ -45,29 +45,29 @@ const MapSelection = () => {
   return (
     <div className='container'>
       <div className='map-selection'>
-        <div className='map-choice'>
-          <img id='troy-selection' alt='troy' />
-          <p>Troy</p>
-          <button onClick={()=>handleSelection('troy')}>Select</button>
+        <div className='intro'>Select map</div>
+        <div className='maps'>
+          <div className='map-choice'>
+            <p>Troy</p>
+            <img id='troy-selection' alt='troy' />
+            <button onClick={() => handleSelection('troy')}>Select</button>
+          </div>
+          <div className='map-choice'>
+            <p>Giants</p>
+            <img id='giants-selection' alt='giants' />
+            <button onClick={() => handleSelection('giants')}>Select</button>
+          </div>
+          <div className='map-choice'>
+            <p>Gluttons</p>
+            <img id='gluttons-selection' alt='gluttons' />
+            <button onClick={() => handleSelection('gluttons')}>Select</button>
+          </div>
         </div>
-
-        <div className='map-choice'>
-          <img id='giants-selection' alt='giants' />
-          <p>Giants</p>
-          <button onClick={()=>handleSelection('giants')}>Select</button>
-        </div>
-
-        <div className='map-choice'>
-          <img id='gluttons-selection' alt='gluttons'  />
-          <p>Gluttons</p>
-          <button onClick={()=>handleSelection('gluttons')}>Select</button>
-        </div>
+        
       </div>
-      {isReady && <App map={map}/>}
+      {isReady && <App map={map} />}
     </div>
-    
-    
-  )
+  );
 };
 
 export default MapSelection;

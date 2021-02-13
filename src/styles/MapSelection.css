@@ -3,10 +3,21 @@
   height: 100%;
   width: 100%;
   display: flex;
-  justify-content: center;
+  flex-direction: column;
   align-items: center;
+  justify-content: center;
   background: black;
   color: white;
+  overflow: scroll;
+}
+
+.intro {
+  font-size: 3em;
+  padding: 20px;
+}
+
+.maps {
+  display: flex;
   gap: 10px;
 }
 
@@ -17,16 +28,18 @@
   align-items: center;
   gap: 20px;
   border: 1px solid white;
+  border-radius: 10px;
   padding: 20px;
 }
 
 .map-choice img {
-  height: 100px;
   width: 200px;
+  border-radius: 10px;
 }
 
 .map-choice p {
   text-align: center;
+  font-weight: bold;
 }
 
 .map-choice button {
@@ -40,4 +53,14 @@
 .map-choice button:hover {
   opacity: 0.5;
   cursor: pointer;
+}
+
+@media (max-width: 750px) {
+  .maps {
+    flex-direction: column;
+  }
+
+  .map-selection {
+    justify-content: flex-start;
+  }
 }
