@@ -48,17 +48,17 @@ const MapSelection = () => {
         <div className='intro'>Select map</div>
         <div className='maps'>
           <div className='map-choice'>
-            <p>Troy</p>
+            <p>Horseplay in Troy</p>
             <img id='troy-selection' alt='troy' />
             <button onClick={() => handleSelection('troy')}>Select</button>
           </div>
           <div className='map-choice'>
-            <p>Giants</p>
+            <p>The Unfriendly Giants</p>
             <img id='giants-selection' alt='giants' />
             <button onClick={() => handleSelection('giants')}>Select</button>
           </div>
           <div className='map-choice'>
-            <p>Gluttons</p>
+            <p>The Gobbling Gluttons</p>
             <img id='gluttons-selection' alt='gluttons' />
             <button onClick={() => handleSelection('gluttons')}>Select</button>
           </div>
