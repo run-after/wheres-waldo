@@ -39,6 +39,7 @@ const Scoreboard = (props) => {
 
   return (
     <div className='scoreboard'>
+      <button className='restart-btn' onClick={()=>window.location.reload()}>Restart</button>
       <div className='banner'>
         <span className='place'>Place</span>
         <span className='name'>Name</span>
