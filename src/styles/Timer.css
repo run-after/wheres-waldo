@@ -69,3 +69,11 @@ form {
     font-size: 0.5em;
   }
 }
+
+@media (max-width: 850px) {
+  .timer {
+    justify-self: end;
+    margin: 20px;
+    font-size: 1.5em;
+  }
+}
