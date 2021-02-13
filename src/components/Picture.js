@@ -6,7 +6,6 @@ import 'firebase/firestore';
 import 'firebase/storage';
 
 const Picture = (props) => {
-  console.log(props.map)
 
   const [score, setScore] = useState(0);
 
@@ -55,7 +54,13 @@ const Picture = (props) => {
     const y = event.layerY;
     const menu = document.createElement('div');
     menu.classList.add('menu');
-    menu.style = `left: ${x + 25}px; top: ${y + 25}px;`;
+    // Don't allow buttons to overflow off screen
+    if (x > 1700) {
+      menu.style = `left: ${x - 115}px; top: ${y + 25}px;`;
+    } else {
+      menu.style = `left: ${x + 25}px; top: ${y + 25}px;`;
+    };
+    
     Object.keys(characters).forEach((person) => {
       const btn = document.createElement('button');
       btn.classList.add('person-selector');
