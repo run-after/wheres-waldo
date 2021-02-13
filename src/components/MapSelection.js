@@ -27,6 +27,15 @@ const MapSelection = () => {
     console.log(error)
     window.location.reload();
   });
+
+  const gluttonsRef = storage.ref('gluttons.jpeg');
+  gluttonsRef.getDownloadURL().then((url) => {
+    const pic = document.querySelector(`#gluttons-selection`);
+    pic.setAttribute('src', url);
+  }).catch((error) => {
+    console.log(error)
+    window.location.reload();
+  });
   
   const handleSelection = (name) => {
     setMap(name);
@@ -49,9 +58,9 @@ const MapSelection = () => {
         </div>
 
         <div className='map-choice'>
-          <img id='whatever-selection' alt='whatever'  />
-          <p>Whatever</p>
-          <button onClick={()=>handleSelection('whatever')}>Select</button>
+          <img id='gluttons-selection' alt='gluttons'  />
+          <p>Gluttons</p>
+          <button onClick={()=>handleSelection('gluttons')}>Select</button>
         </div>
       </div>
       {isReady && <App map={map}/>}
