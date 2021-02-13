@@ -56,12 +56,3 @@ function App(props) {
 };
 
 export default App;
-
-// TODO:
-
-// Make initial screen that allows selection of map
-// in Picture - remove event listener after game over
-
-// Timer - remove setInterval after game over
-
-// Maybe add a restart button? After game over
