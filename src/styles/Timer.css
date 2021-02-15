@@ -10,10 +10,19 @@
   bottom: 0;
   margin: auto;
   border-radius: 20px;
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
+  -webkit-box-pack: center;
+  -ms-flex-pack: center;
   justify-content: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
   align-items: center;
   color: white;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+  -ms-flex-direction: column;
   flex-direction: column;
   text-align: center;
 }
@@ -42,7 +51,9 @@
 }
 
 .timer {
+  -ms-grid-column-align: center;
   justify-self: center;
+  -ms-grid-row-align: center;
   align-self: center;
   color: white;
   font-size: 2em;
@@ -51,7 +62,12 @@
 }
 
 form {
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+  -ms-flex-direction: column;
   flex-direction: column;
 }
 
@@ -72,6 +88,7 @@ form {
 
 @media (max-width: 850px) {
   .timer {
+    -ms-grid-column-align: end;
     justify-self: end;
     margin: 20px;
     font-size: 1.5em;
